@@ -11,7 +11,7 @@ public class UserDaoTest {
         user.setFirstname("Benjamin");
         user.setLastname("Tourman");
 
-        new UserDao().save(user);
+        System.out.println(new UserDao().save(user));
     }
 
     @Test

@@ -19,11 +19,8 @@ public abstract class AbstractDao<T> {
         tx = session.beginTransaction();
     }
 
-    public void save(T object) {
-        this.execute((s) -> {
-            s.save(object);
-            return null;
-        });
+    public long save(T object) {
+        return this.execute((s) -> (long) s.save(object));
     }
 
     public void delete(T object) {
@@ -37,6 +34,7 @@ public abstract class AbstractDao<T> {
         start();
         session.merge(object);
         session.getTransaction().commit();
+        session.close();
     }
 
     public T get(long id) {
@@ -47,6 +45,7 @@ public abstract class AbstractDao<T> {
         start();
         A result = fn.apply(session);
         session.getTransaction().commit();
+        session.close();
         return result;
     }
 

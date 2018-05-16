@@ -18,6 +18,9 @@ public class Channel {
     @OneToMany(mappedBy = "channel", fetch = FetchType.EAGER)
     @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.DELETE})
     private List<Message> messages;
+    @ManyToMany(mappedBy = "channel", fetch = FetchType.LAZY)
+    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.DELETE})
+    private List<User> users;
 
     public long getID() {
         return ID;

@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.List;
 
 @Entity
 @Table(name = "admin")
@@ -14,7 +15,7 @@ import javax.persistence.Table;
     private String pseudo;
     @OneToMany(mappedBy = "admin", fetch = FetchType.EAGER)
     @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.DELETE})
-    private String creditCards;
+    private List<CreditCard> creditCards;
 
     @Override
     public String getPseudo() {

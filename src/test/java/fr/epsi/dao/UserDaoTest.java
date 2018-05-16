@@ -1,10 +1,8 @@
 package fr.epsi.dao;
 
 import com.sun.xml.internal.bind.v2.model.core.ID;
+import fr.epsi.model.*;
 import fr.epsi.model.Channel;
-import fr.epsi.model.Channel;
-import fr.epsi.model.Message;
-import fr.epsi.model.User;
 import org.junit.Test;
 
 import java.util.Calendar;
@@ -48,7 +46,6 @@ public class UserDaoTest {
         Channel c=new ChannelDao().get(22);
         System.out.println(c.getChannelName());
         System.out.println(c.getLockType());
-
     }
 
     @Test
@@ -64,10 +61,11 @@ public class UserDaoTest {
         System.out.println(m.getText());
         System.out.println(m.getPoints());
     }
-/*
+
     @Test
-    public void getTweet(){
-        Tweet tweet=new Tweet();
-        System.out.println(tweet.getText());
-    }*/
+    public void insertCreditCard(){
+        CreditCard creditCard=new CreditCard();
+        creditCard.setCardName("card1");
+        creditCard.setCardNumber(66669098);
+    }
 }

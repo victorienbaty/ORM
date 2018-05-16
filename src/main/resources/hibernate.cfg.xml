@@ -6,7 +6,7 @@
 
         <property name="dialect">org.hibernate.dialect.H2Dialect</property>
         <property name="connection.driver_class">org.h2.Driver</property>
-        <property name="connection.url">jdbc:h2:file:/Users/btourman/workspace/java/orm/src/test/resources/orm</property>
+        <property name="connection.url">jdbc:h2:file:C:/Users/victorien/IdeaProjects/getting-started-hibernate/java/orm/src/test/resources/orm</property>
         <property name="connection.username">sa</property>
         <property name="connection.password"/>
         <property name="hbm2ddl.auto">update</property>
@@ -15,6 +15,8 @@
         <property name="current_session_context_class">thread</property>
 
         <mapping class="fr.epsi.model.User"/>
+        <mapping class="fr.epsi.model.Channel"/>
+        <mapping class="fr.epsi.model.Message"/>
 
     </session-factory>
 </hibernate-configuration>

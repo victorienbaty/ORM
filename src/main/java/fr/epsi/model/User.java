@@ -1,42 +1,50 @@
 package fr.epsi.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.Formula;
+
+import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 @Entity
-@Table(name = "user")
+@Table(name = "user", uniqueConstraints=
+@UniqueConstraint(columnNames={"email"}),indexes = {@Index(columnList = "email")})
 public class User implements Serializable {
-
     @Id
     @GeneratedValue
     private long id;
-    private String firstname;
-    private String lastname;
+    private String pseudo;
+    private String password;
+    private String email;
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    private List<Channel> Channels;
 
-    public long getId() {
-        return id;
+    public String getPseudo() {
+        return pseudo;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setPseudo(String pseudo) {
+        this.pseudo = pseudo;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getPassword() {
+        return password;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getEmail() {
+        return email;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setEmail(String email) {
+        this.email = email;
     }
+    public ArrayList channels;
 }
